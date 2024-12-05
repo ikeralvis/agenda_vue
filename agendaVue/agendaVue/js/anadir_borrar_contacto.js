@@ -1,34 +1,35 @@
-new Vue({
-    el: '#app',
+var app1 = new Vue({
+    el: '#app',  
     data: {
-        newContact: {
-            name: '',
-            email: '',
-            phone: ''
-        },
+
+        newName: '',
+        newEmail: '',
+        newTelephone: '',
+
         contacts: [
-            { id: 1, name: 'John Doe', email: 'john.doe@deusto.es', phone: '555555555' },
-            { id: 2, name: 'Jane Smith', email: 'jane.smith@example.com', phone: '555123456' },
+            { name: 'John Doe', email: 'john.doe@deusto.es', telephone: '555555555' },
+            { name: 'Pavel Blanco Argollo', email: 'p.blanco@seznam.cz', telephone: '420773230523' },
         ]
     },
     methods: {
-        addContact() {
-            if (this.newContact.name && this.newContact.email && this.newContact.phone) {
-                this.contacts.push({
-                    id: this.contacts.length + 1,
-                    name: this.newContact.name,
-                    email: this.newContact.email,
-                    phone: this.newContact.phone
-                });
-                this.newContact.name = '';
-                this.newContact.email = '';
-                this.newContact.phone = '';
-            } else {
-                alert('Por favor, completa todos los campos.');
-            }
-        },
-        removeContact(index) {
+        deleteContact: function(index) {
             this.contacts.splice(index, 1);
+        },
+
+        
+    saveContact: function() {
+        if (this.newName && this.newEmail && this.newTelephone) {
+            this.contacts.push({
+                name: this.newName,
+                email: this.newEmail,
+                telephone: this.newTelephone
+            });
+
+            this.newName = '';
+            this.newEmail = '';
+            this.newTelephone = '';
         }
     }
+    }
 });
+
